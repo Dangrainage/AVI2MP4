@@ -1,13 +1,11 @@
-#!/bin/bash
-
-# Create the new folder if it doesn't exist
+# Make a mp4s folder If It isn't already there
 mkdir -p mp4s
 
-# Loop through all .AVI files in the current directory
+# Looks for all .AVI files in the directory
 for file in *.AVI; do
-    # Extract the base name of the file without the extension
+    # Picks the names of .AVI files
     base_name=$(basename "$file" .AVI)
     
-    # Convert the file to .mp4 and place it in the mp4s folder
+    # Places the files into the mp4s directory
     ffmpeg -i "$file" -c:v libx264 -c:a aac "mp4s/${base_name}.mp4"
 done
